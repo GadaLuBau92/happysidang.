@@ -1,6 +1,9 @@
 const body = document.querySelector("body");
   const swalst = Swal.mixin({timer: 2300, allowOutsideClick: false, showConfirmButton: false, timerProgressBar: true, imageHeight: 90,}); 
-  audio = new Audio('' + linkmp3.src); 
+  
+  // Inisialisasi audio langsung dari elemen HTML
+  var audio = document.getElementById("linkmp3");
+  
   ftganti=0; fungsi=0; fungsiAwal=0; deffotostiker=fotostiker.src;
   
   function berjatuhan() {
@@ -21,7 +24,11 @@ const body = document.querySelector("body");
   
   document.getElementById("kadoIn").onclick = function() {
     if(fungsiAwal==0){
-      audio.play();
+      // Memaksa audio diputar saat tombol kado diklik
+      audio.play().catch(function(error) {
+        console.log("Audio play error:", error);
+      });
+      
       fungsiAwal=1;
       kadoIn.style="transition:all .8s ease;transform:scale(10);opacity:0";
       wallpaper.style="transform: scale(1.5);";
@@ -215,7 +222,7 @@ const body = document.querySelector("body");
     }
   }
   
-  var tanya = 'Mau Traktiran Gak Nih? 😶';
+  var tanya = 'Mau Traktiran Gak Nih? 😶❤️';
   var opstanya = 'Ayo jawab 😆';
   var tompositif = 'Mau';
   var tomnegatif = 'Engga';
@@ -228,6 +235,6 @@ const body = document.querySelector("body");
 
   // Watermark buatan kamu sendiri di pojok kanan bawah
   const watermark = document.createElement('div');
-  watermark.innerHTML = "Created by Azhar";
+  watermark.innerHTML = "Created by Azhar 🚀";
   watermark.style = "position: fixed; bottom: 10px; right: 10px; font-size: 11px; color: white; opacity: 0.6; z-index: 9999; font-family: sans-serif;";
   document.body.appendChild(watermark);
